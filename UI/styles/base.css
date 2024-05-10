@@ -16,13 +16,19 @@ nav { background-color: rgba(255, 230, 0, 0.753);
     height: 2rem;
 }
 
+/*#buttons{
+    text-align: right;
+}*/
+
 .button{
+    margin:1%;
     padding: 1px;
     border-radius: 0.5rem;
     font: bold;
     color: white;
     height: 1.5rem; 
     background-color: navy;
+    float: right;
 }
 
 .button:hover,
@@ -111,6 +117,26 @@ tbody tr:nth-child(even){
 tbody tr:hover {
     background-color: #fff;
 }
+
+.footer{
+    display: flex;
+    align-items: center; /* Vertical centering */
+    justify-content: center; /* Horizontal centering */
+    /* Add other styles like height, width, background-color as needed */
+    color: white;
+    background-color: navy;
+    height: 3rem;
+}
+
+footer p {
+    /* Your paragraph styles here */
+    /* If you want to center the text inside the paragraph */
+    text-align: center;
+}
+
+
+/* some features are universal some are on 
+individual pages will identify the page I will make changes to each time I do */
 
 
 
