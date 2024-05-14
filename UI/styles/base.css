@@ -16,6 +16,10 @@ nav { background-color: rgba(255, 230, 0, 0.753);
     height: 2rem;
 }
 
+a {color: #007bff;
+    text-decoration: none;
+    background-color: transparent;
+}
 /*#buttons{
     text-align: right;
 }*/
