@@ -46,6 +46,7 @@
                 <thread>
                     <tr>
                         <th>Name</th>
+                        <th>Surname</th>
                         <th>Staff Id</th>
                         <th>Campus</th>
                         <th>Department</th>
@@ -55,24 +56,84 @@
                 </thread>
                 <tbody>
                     <tr>
-                        <td>Majoni Tembo</td>
-                        <td>45678f</td>
-                        <td>Gweru Main Campus</td>
-                        <td>Applied Mathematics</td>
-                        <td>0778908888e7</td>
-                        <td>Majoni@msu</td>
+                    <!-- will populate from form-->
                     </tr>
                 </tbody>
             </table>
         </section>
-        <button class="button">
+        
+        <button type="button" class="button" data-toggle="modal" data-target="#supervisorModal">
             Add Supervisor
         </button>
 
     </main>
+    <!-- Modal for scheduling new supervisor -->
+    <div class="modal fade" id="supervisorModal" tabindex="-1" role="dialog" aria-labelledby="supervisorModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="supervisorModalLabel">Add New Supervisor</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="supervisorForm">
+                        <div class="form-group">
+                            <label for="supervisorName">Name</label>
+                            <input type="text" class="form-control" id="supervisorName" name="supervisorName" placeholder="First Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="supervisorSName">Surname</label>
+                            <input type="text" class="form-control" id="supervisorSName" name="supervisorSName" placeholder="Last Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="staffId">Staff Id</label>
+                            <input type="text" class="form-control" id="staffId" name="staffId"
+                                   pattern="[A-Za-z0-9]+" title="Please enter a valid alphanumeric ID." placeholder="Staff Id">
+                        </div>
+                        <div class="form-group">
+                            <label for="supervisorCampus">Campus</label>
+                            <select class="form-control" id="supervisorCampus" name="supervisorCampus">
+                                <option value="Bulawayo">Bulawayo</option>
+                                <option value="Gweru">Gweru</option>
+                                <option value="Harare">Harare</option>
+                                <option value="Kwekwe">Kwekwe</option>
+                                <option value="Zvishavane">Zvishavane</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="supervisorDepartment">Department</label>
+                            <select class="form-control" id="supervisorDepartment" name="supervisorDepartment">
+                                <!--options to be dynamically added --> 
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="supervisorPhone">Phone</label>
+                            <input type="tel" class="form-control" id="supervisorPhone" name="supervisorPhone"
+                                   pattern="\+263[0-9]{9}" title="Phone number should start with +263 followed by 9 digits."
+                                   placeholder="+263123456789">
+                        </div>
+                        <div class="form-group">
+                            <label for="staffEmail">Staff Email</label>
+                            <input type="text" class="form-control" id="staffEmail" name="staffEmail">
+                        </div>
+                        
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="saveAssessment">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <footer class="footer">
         <p class="ftext">MSU WRL Project SH05</p>
     </footer>
+<!--Scripts for supervisorlist-->  
+<script src="/UI/scripts/supervisor.js"></script> 
 <!-- Scripts for Bootstrap functionality -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
