@@ -4,57 +4,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles/reg.css">
   <title>Student Registration</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #003;
-      text-align: center;
-      padding: 50px;
-    }
-    .row {
-      display: flex;
-      justify-content: space-around;
-      margin-top: 20px;
-    }
-    .column {
-      flex: 33.33%;
-      padding: 10px;
-    }
-    form {
-      text-align: left;
-      background-color: #fff;
-      padding: 20px;
-      border-radius: 5px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-    input, select {
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      box-sizing: border-box;
-    }
-    input[type="file"] {
-      margin-top: 10px;
-    }
-    input[type="submit"] {
-      background-color: #4CAF50;
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    img {
-      width: 20%;
-      height: 10%;
-    }
-  </style>
 </head>
+<header>
+  <h1>Student Registration</h1>
+</header>
 <body>
-  <img src="xmain-logo.png" alt="Student Registration"/>
   <div class="row">
     <div class="column">
       <form>
@@ -94,7 +50,7 @@
         <input type="file" id="addFileTo" name="addFileTo"><br>
         <label for="printTemplate">Print Template:</label>
         <button onclick="window.location.href='path_to_print_template_document.pdf'" type="button">Download Template</button>
-        <input type="submit" value="Submit">
+        <input type="submit" value="Submit" aria aria-label="submit">
       </form>
     </div>
   </div>
