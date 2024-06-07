@@ -1,6 +1,6 @@
 from sql_connection import get_sql_connection
 
-def get_all_products(connection):
+def get_all_campuses(connection):
     cursor = connection.cursor()
     query = ("select campus.campus_id, campus.campus_name")
     cursor.execute(query)
@@ -12,7 +12,7 @@ def get_all_products(connection):
         })
     return response
 
-def insert_new_product(connection, campus):
+def insert_new_campus(connection, campus):
     cursor = connection.cursor()
     query = ("INSERT INTO campus "
              "(name)"
