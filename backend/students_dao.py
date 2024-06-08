@@ -8,8 +8,8 @@ def get_all_students(connection):
              "student.campus_id, campus.campus_name, "
              "student.program_id, program.prog_name, "
              "student.level_id, level.level_code, "
-             "student.company_id, company.comp_name, "
-             "student.supervisor_id, supervisor.sup_fname, supervisor.sup_lname "
+             "student.company_id, company.comp_name, company.comp_phone, company.comp_email, company.comp_startdate, "
+             "student.supervisor_id, supervisor.sup_fname, supervisor.sup_lname, supervisor.sup_phone, supervisor.sup_email "
              "FROM student "
              "INNER JOIN department ON student.department_id = department.department_id "
              "INNER JOIN campus ON student.campus_id = campus.campus_id "
@@ -21,7 +21,8 @@ def get_all_students(connection):
     response = []
     for (student_id, student_fname, student_lname, reg_number, student_phone, student_email,
          department_id, dep_name, campus_id, campus_name, program_id, prog_name,
-         level_id, level_code, company_id, comp_name, supervisor_id, sup_fname, sup_lname) in cursor:
+         level_id, level_code, company_id, comp_name, comp_phone, comp_email, comp_startdate,
+         supervisor_id, sup_fname, sup_lname, sup_phone, sup_email) in cursor:
         response.append({
             'student_id': student_id,
             'student_fname': student_fname,
@@ -39,8 +40,13 @@ def get_all_students(connection):
             'level_code': level_code,
             'company_id': company_id,
             'comp_name': comp_name,
+            'comp_phone': comp_phone,
+            'comp_email': comp_email,
+            'comp_startdate': comp_startdate,
             'supervisor_id': supervisor_id,
-            'supervisor_name': f"{sup_fname} {sup_lname}" if sup_fname and sup_lname else None
+            'supervisor_name': f"{sup_fname} {sup_lname}" if sup_fname and sup_lname else None,
+            'sup_phone': sup_phone,
+            'sup_email': sup_email
         })
     return response
 

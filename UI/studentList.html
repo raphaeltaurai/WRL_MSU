@@ -29,12 +29,6 @@
         </section>
         
     </nav>
-    <!-- <nav>
-        <a href="index.html">Student List</a>
-        <a href="supervisor.html">Supervisor List</a>
-        <a href="scheduling">Scheduling</a>
-    </nav> -->
-
     <main class="table">
         <section id="buttons">
             <a href="supervisorlist.html"><button class="button" >Supervisors</button></a>
@@ -45,7 +39,7 @@
         </section>
         <section class="table_body">
             <table>
-                <thread>
+                <thead>
                     <tr>
                         <th>Number</th>
                         <th>Level</th>
@@ -66,30 +60,9 @@
                         <th>Assessor Email</th>
                         <th>Assessor Phone</th>
                     </tr>
-                </thread>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>3.1</td>
-                        <td>Mukadota John</td>
-                        <td>R546769X</td>
-                        <td>R546769X@students.msu</td>
-                        <td>Bchlr in Food Science</td>
-                        <td>Dendairy</td>
-                        <td>Dendairy@gweru.com</td>
-                        <td>01 June 2043</td>
-                        <td>01 March 2044</td>
-                        <td>Gweru</td>
-                        <td>
-                            <p>Done</p>
-                        </td>
-                        <td>
-                            <p>Pending</p>
-                        </td>
-                        <td>Mukadota James</td>
-                        <td>assessor@staff.msu</td>
-                    </tr>
-                    
+                </thead>
+                <tbody id="student-table-body">
+                    <!-- will be populated by JavaScript -->
                 </tbody>
             </table>
         </section>
@@ -98,51 +71,48 @@
         <p class="ftext">MSU WRL Project SH05</p>
     </footer>
 
-<!-- Scripts for Bootstrap functionality -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- Scripts for Bootstrap functionality -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <!-- Script to fetch and populate student data -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch('/getStudents')
+                .then(response => response.json())
+                .then(data => {
+                    const tableBody = document.getElementById('student-table-body');
+                    tableBody.innerHTML = ''; // Clear existing content
+
+                    data.forEach((student, index) => {
+                        const row = document.createElement('tr');
+
+                        row.innerHTML = `
+                            <td>${index + 1}</td>
+                            <td>${student.level_code}</td>
+                            <td>${student.student_fname} ${student.student_lname}</td>
+                            <td>${student.reg_number}</td>
+                            <td>${student.prog_name}</td>
+                            <td>${student.comp_name || ''}</td>
+                            <td>${student.city || ''}</td>
+                            <td>${student.date_of_engagement || ''}</td>
+                            <td>${student.assessment_3_1 || ''}</td>
+                            <td>${student.assessment_3_2 || ''}</td>
+                            <td>${student.supervisor_name || ''}</td>
+                            <td>${student.end_date || ''}</td>
+                            <td>${student.student_email}</td>
+                            <td>${student.student_phone}</td>
+                            <td>${student.comp_email || ''}</td>
+                            <td>${student.comp_phone || ''}</td>
+                            <td>${student.sup_email || ''}</td>
+                            <td>${student.sup_phone || ''}</td>
+                        `;
+
+                        tableBody.appendChild(row);
+                    });
+                });
+        });
+    </script>
 </body>
 </html>
-
-<!-- <fielset>
-            
-    <section class="table">
-        <table class="stdlist_table">
-            <thead>
-                <tr class="table_header">
-                    <th>Number</th>
-                    <th>Level</th>
-                    <th>Student Name</th>
-                    <th>Reg Number</th>
-                    <th>Program</th>
-                    <th>Organisation</th>
-                    <th>Date of Engagement</th>
-                    <th>City</th>
-                    <th>3.1 Assessment</th>
-                    <th>3.2 Assessment</th>
-                    <th>Lecturer</th>
-                    <th>zvimwewo</th>
-                    <th>zvimwewo</th>
-                    <th>nezvimwewo</th>
-                </tr>
-            </thead>
-            <tbody class="table_body">
-                <tr>
-                    <td>1</td>
-                    <td>3.1</td>
-                    <td>Mukadota John</td>
-                    <td>R546769X</td>
-                    <td>Bchlr in Food Science</td>
-                    <td>Dendairy</td>
-                    <td>01 June 2043</td>
-                    <td>Gweru</td>
-                    <td>Done</td>
-                    <td>Pending</td>
-                    <td>Mukadota James</td>
-                </tr>
-
-            </tbody>
-        </table>
-    </section>
-</fieldset> -->
